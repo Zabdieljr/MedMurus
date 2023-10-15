@@ -16,7 +16,7 @@ public class User_Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @NonNull
-    private long userid;
+    private long userId;
     @NonNull
     private long senderId;
     @Nullable
@@ -24,12 +24,12 @@ public class User_Post {
     @NonNull
     private Date createdAt;
     @NonNull
-    private Date udatedAt;
+    private Date updatedAt;
 
     //foreign key
     @ManyToMany
-    @JoinTable (name = "user_posts" , joinColumns = @JoinColumn(name = "userid"),
-            inverseJoinColumns = @JoinColumn(name ="postid"))
+    @JoinTable (name = "user_posts" , joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name ="postId"))
     private Set<User> users;
 
     public Set<User> getUsers() {
@@ -43,13 +43,13 @@ public class User_Post {
     public User_Post() {
     }
 
-    public User_Post(long id, long userid, long senderId, @Nullable String message, @NonNull Date createdAt, @NonNull Date udatedAt) {
+    public User_Post(long id, long userId, long senderId, @Nullable String message, @NonNull Date createdAt, @NonNull Date updatedAt) {
         this.id = id;
-        this.userid = userid;
+        this.userId = userId;
         this.senderId = senderId;
         this.message = message;
         this.createdAt = createdAt;
-        this.udatedAt = udatedAt;
+        this.updatedAt = updatedAt;
     }
 
     public long getId() {
@@ -60,12 +60,12 @@ public class User_Post {
         this.id = id;
     }
 
-    public long getUserid() {
-        return userid;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUserid(long userID) {
-        this.userid = userid;
+    public void setUserId(long userID) {
+        this.userId = userId;
     }
 
     public long getSenderId() {
@@ -95,23 +95,23 @@ public class User_Post {
     }
 
     @NonNull
-    public Date getUdatedAt() {
-        return udatedAt;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUdatedAt(@NonNull Date udatedAt) {
-        this.udatedAt = udatedAt;
+    public void setUpdatedAt(@NonNull Date udatedAt) {
+        this.updatedAt = udatedAt;
     }
 
     @Override
     public String toString() {
         return "User_Post{" +
                 "id=" + id +
-                ", userid=" + userid +
+                ", userid=" + userId +
                 ", senderId=" + senderId +
                 ", message='" + message + '\'' +
                 ", createdAt=" + createdAt +
-                ", udatedAt=" + udatedAt +
+                ", udatedAt=" + updatedAt +
                 '}';
     }
 
