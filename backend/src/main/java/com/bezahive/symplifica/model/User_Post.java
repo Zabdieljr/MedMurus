@@ -13,7 +13,7 @@ public class User_Post {
 
     @Id()
     @NonNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @NonNull
     private long userId;
@@ -40,17 +40,6 @@ public class User_Post {
         this.users = users;
     }
 
-    public User_Post() {
-    }
-
-    public User_Post(long id, long userId, long senderId, @Nullable String message, @NonNull Date createdAt, @NonNull Date updatedAt) {
-        this.id = id;
-        this.userId = userId;
-        this.senderId = senderId;
-        this.message = message;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 
     public long getId() {
         return id;

@@ -1,40 +1,31 @@
 package com.bezahive.symplifica.model;
 
 import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
 
 import java.util.Date;
 @Entity
-@Table(name="user_message")
+@Table(name="message_table")
 public class Message {
 
         @Id()
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        private Long id;
-
+        @NonNull
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
+    @NonNull
         private long sourceId;
+    @NonNull
         private long targetId;
         private String message;
 
         private Date createdAt;
         private Date updatedAt;
 
-    public Message() {
-    }
-
-    public Message(Long id, long sourceId, long targetId, String message, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.sourceId = sourceId;
-        this.targetId = targetId;
-        this.message = message;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public Long getId() {
+     public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

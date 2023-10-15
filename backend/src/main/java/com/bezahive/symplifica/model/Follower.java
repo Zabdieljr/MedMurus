@@ -1,6 +1,7 @@
 package com.bezahive.symplifica.model;
 
 import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
 
 import java.util.Date;
 
@@ -8,30 +9,22 @@ import java.util.Date;
 @Table(name="user_follower")
 public class Follower {
     @Id()
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @NonNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @NonNull
     private long sourceId;
+    @NonNull
     private long targetId;
 
-    private Integer type;
+    private int type;
 
     private Date createdAt;
     private Date updatedAt;
 
-    public Follower() {
-    }
 
-    public Follower(Long id, long sourceId, long targetId, Integer type, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.sourceId = sourceId;
-        this.targetId = targetId;
-        this.type = type;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -55,7 +48,7 @@ public class Follower {
         this.targetId = targetId;
     }
 
-    public Integer getType() {
+    public int getType() {
         return type;
     }
 

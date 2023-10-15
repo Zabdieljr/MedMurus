@@ -1,6 +1,7 @@
 package com.bezahive.symplifica.model;
 
 import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
 
 import java.util.Date;
 
@@ -10,9 +11,12 @@ public class Friend {
 
 
     @Id()
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @NonNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NonNull
     private long sourceId;
+    @NonNull
     private long targetId;
     private Integer type;
     private Integer status;
@@ -20,19 +24,7 @@ public class Friend {
     private Date updatedAt;
     private String notes;
 
-    public Friend() {
-    }
 
-    public Friend(Long id, long sourceId, long targetId, Integer type, Integer status, Date createdAt, Date uodatedAt, String notes) {
-        this.id = id;
-        this.sourceId = sourceId;
-        this.targetId = targetId;
-        this.type = type;
-        this.status = status;
-        this.createdAt = createdAt;
-        updatedAt = uodatedAt;
-        this.notes = notes;
-    }
 
     public long getSourceId() {
         return sourceId;

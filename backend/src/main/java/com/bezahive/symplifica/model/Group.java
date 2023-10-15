@@ -1,6 +1,7 @@
 package com.bezahive.symplifica.model;
 
 import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
 
 import java.util.Date;
 
@@ -9,10 +10,12 @@ import java.util.Date;
 public class Group {
 
     @Id()
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @NonNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NonNull
     private long sourceId;
+    @NonNull
     private long targetId;
     private long createdBy;
     private long updatedBy;
@@ -27,25 +30,6 @@ public class Group {
     private Date createdAt;
     private Date updatedAt;
 
-    public Group() {
-    }
-
-    public Group(Long id, long sourceId, long targetId, long createdBy, long updatedBy, String tittle, String metaTittle, String slug, String summary, Integer status, String profile, String content, Date createdAt, Date updatedAt) {
-        this.id = id;
-        this.sourceId = sourceId;
-        this.targetId = targetId;
-        this.createdBy = createdBy;
-        this.updatedBy = updatedBy;
-        this.tittle = tittle;
-        this.metaTittle = metaTittle;
-        this.slug = slug;
-        this.summary = summary;
-        this.status = status;
-        this.profile = profile;
-        this.content = content;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 
     public Long getId() {
         return id;
