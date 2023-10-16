@@ -13,6 +13,8 @@ public class Meta {
     private long id;
     private String test;
     private String metaKey;
+
+    //foreign key
     private String groupid;
 
 }
