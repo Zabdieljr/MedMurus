@@ -16,7 +16,7 @@ public class UserController {
 
     @RequestMapping("/user")
     public String hello_world(){
-        return "Symplifica REST API";
+        return "User REST API";
     }
 
     // add/register User
