@@ -9,9 +9,10 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    // repository
+
     @Autowired
     private UserRepository userRepository;
+
 
     @Override
     public User addUser(User user) {
@@ -23,7 +24,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id).get();
     }
 
-
     @Override
     public List<User> getUsers() {
         return (List<User>) userRepository.findAll();
@@ -31,11 +31,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(long id) {
-        userRepository.deleteById(id);
+     userRepository.deleteById(id);
     }
 
     @Override
     public User updateUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User getUserByUserName(String username) {
+        return userRepository.findByUsername(username);
     }
 }

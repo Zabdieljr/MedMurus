@@ -1,6 +1,7 @@
 package com.bezahive.symplifica.controller;
 
 import com.bezahive.symplifica.model.User;
+import com.bezahive.symplifica.repository.UserRepository;
 import com.bezahive.symplifica.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,13 +11,19 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
+
+    private final UserRepository userRepository;
     // service
     @Autowired
     private UserService userService;
 
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @RequestMapping("/user")
-    public String hello_world(){
-        return "User REST API";
+    public String welcome(){
+        return "MedMurus User REST API";
     }
 
     // add/register User
@@ -50,5 +57,14 @@ public class UserController {
         userService.deleteUser(id);
         return "User Deleted";
     }
+    @GetMapping("/byEmail/{email}")
+    public User getUserByEmail(@PathVariable String email) {
 
+        return userRepository.findByEmail(email);
+    }
+
+    @GetMapping("/byUsername/{username}")
+    public User getUserByUserName(@PathVariable String username) {
+        return userRepository.findByUsername(username);
+    }
 }

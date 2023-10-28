@@ -1,70 +1,51 @@
 package com.bezahive.symplifica.model;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.lang.NonNull;
 
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name="user_table")
+@EntityListeners(AuditingEntityListener.class)
+@Table(name="user")
 public class User {
-
-    @Id()
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String email;
-    private String gender;
+    @Column(name = "id", nullable = false)
+    private Long id;
+
     private String firstName;
     private String middleName;
     private String lastName;
-    private String userName;
+    private String username;
     private String mobile;
-    @NonNull
+    private String email;
     private String passwordHash;
-    @NonNull
-    private Date registeredAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date lastLogin;
+
+    @Lob
     private String intro;
 
+    @Lob
     private String profile;
 
+    // getters, and setters
 
-    @ManyToMany (mappedBy = "users")
-    private Set<User_Post> user_posts;
-
-    public Set<User_Post> getUser_posts() {
-        return user_posts;
-    }
-
-    public void setUser_posts(Set<User_Post> user_posts) {
-        this.user_posts = user_posts;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getFirstName() {
@@ -91,12 +72,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getMobile() {
@@ -107,22 +88,28 @@ public class User {
         this.mobile = mobile;
     }
 
-    @NonNull
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPasswordHash() {
         return passwordHash;
     }
 
-    public void setPasswordHash(@NonNull String passwordHash) {
+    public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
-    @NonNull
-    public Date getRegisteredAt() {
-        return registeredAt;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setRegisteredAt(@NonNull Date registeredAt) {
-        this.registeredAt = registeredAt;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Date getLastLogin() {
@@ -147,20 +134,5 @@ public class User {
 
     public void setProfile(String profile) {
         this.profile = profile;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return id == user.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return (int) (id ^ (id >>> 32));
     }
 }
