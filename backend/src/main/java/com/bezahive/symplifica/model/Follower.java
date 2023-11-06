@@ -22,7 +22,20 @@ public class Follower {
     private Date createdAt;
     private Date updatedAt;
 
+// add constructors
 
+
+    public Follower() {
+           }
+
+
+    public Follower(long sourceId, long targetId, int type, Date createdAt, Date updatedAt) {
+        this.sourceId = sourceId;
+        this.targetId = targetId;
+        this.type = type;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     public long getId() {
         return id;
@@ -70,6 +83,24 @@ public class Follower {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    // hashcode and equals
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Follower follower = (Follower) o;
+
+        return id == follower.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
     }
 
     @Override

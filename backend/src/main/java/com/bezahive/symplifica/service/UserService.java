@@ -7,6 +7,10 @@ import java.util.List;
 
 @Service
 public interface UserService {
+    //Crud methods
+
+
+
     // add entity ex.  public Patient addPatient (User user);
     public User addUser (User user);
     // get entity ex.  public Patient getPatientById(long id);
