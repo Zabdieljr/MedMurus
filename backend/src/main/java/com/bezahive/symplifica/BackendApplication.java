@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = "com.bezahive.symplifica")
 @EnableJpaAuditing
-//@EnableJpaRepositories(basePackageClasses = PatientRepository.class)
+    //@EnableJpaRepositories(basePackageClasses = PatientRepository.class)
+    @EnableJpaRepositories(basePackages = "com.bezahive.symplifica.repository")
 
 public class BackendApplication {
 
