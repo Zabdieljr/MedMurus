@@ -13,6 +13,4 @@ public interface MetaRepository extends CrudRepository<Meta, Long> {
     Meta findByGroupid(String groupid);
     // add method to find by metaKey
     Meta findByMetaKey(String metaKey);
-
-
 }
