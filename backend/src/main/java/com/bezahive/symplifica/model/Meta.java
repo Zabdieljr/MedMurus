@@ -2,7 +2,7 @@ package com.bezahive.symplifica.model;
 
 import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
-
+//
 @Entity
 @Table(name="groupmeta_table")
 public class Meta {
